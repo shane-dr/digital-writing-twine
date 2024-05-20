@@ -9,7 +9,47 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Who murdered my fiancé?.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Who murdered my fiancé?" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="4B5DC98F-579A-4319-82C3-8DD1065D7E36" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="EYE" tags="" position="750,125" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;=======XXXXXXXXXXXXXXX===&quot;)[The eye watches 
+<tw-storydata name="Who murdered my fiancé?" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="4B5DC98F-579A-4319-82C3-8DD1065D7E36" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="galaxy"] {  /* the tag added in step 2 */
+  background-image: url(./images/galaxy.jpeg);  /* the image added in step 1 */
+  background-size: cover;  /* cover the whole element */
+  background-repeat: no-repeat;  /* do not repeat the background image */
+}
+
+tw-story[tags~="galaxytwo"] {  /* the tag added in step 2 */
+  background-image: url(./images/galaxytwo.jpeg);  /* the image added in step 1 */
+  background-size: cover;  /* cover the whole element */
+  background-repeat: no-repeat;  /* do not repeat the background image */
+}
+
+tw-story[tags~="danger"] {  /* the tag added in step 2 */
+  background-image: url(./images/danger.jpeg);  /* the image added in step 1 */
+  background-size: cover;  /* cover the whole element */
+  background-repeat: no-repeat;  /* do not repeat the background image */
+  background-color:#E67058;
+}
+
+img {  /* this selects all image (img) elements */
+  width: 100%;
+}
+
+
+tw-story[tags~="cream"] {  /* the tag added in step 2 */
+  background-image: url(./images/cream.jpeg);  /* the image added in step 1 */
+  background-size: cover;  /* cover the whole element */
+  background-repeat: no-repeat;  /* do not repeat the background image */
+  background-color:#DCCCB8;
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
+ *  Desc: Resize HTML imageMap to scaled image.
+ *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
+ *  License: MIT
+ */
+
+!function(){"use strict";function r(){function e(){var r={width:u.width/u.naturalWidth,height:u.height/u.naturalHeight},a={width:parseInt(window.getComputedStyle(u,null).getPropertyValue("padding-left"),10),height:parseInt(window.getComputedStyle(u,null).getPropertyValue("padding-top"),10)};i.forEach(function(e,t){var n=0;o[t].coords=e.split(",").map(function(e){var t=1==(n=1-n)?"width":"height";return a[t]+Math.floor(Number(e)*r[t])}).join(",")})}function t(e){return e.coords.replace(/ *, */g,",").replace(/ +/g,",")}function n(){clearTimeout(d),d=setTimeout(e,250)}function r(e){return document.querySelector('img[usemap="'+e+'"]')}var a=this,o=null,i=null,u=null,d=null;"function"!=typeof a._resize?(o=a.getElementsByTagName("area"),i=Array.prototype.map.call(o,t),u=r("#"+a.name)||r(a.name),a._resize=e,u.addEventListener("load",e,!1),window.addEventListener("focus",e,!1),window.addEventListener("resize",n,!1),window.addEventListener("readystatechange",e,!1),document.addEventListener("fullscreenchange",e,!1),u.width===u.naturalWidth&&u.height===u.naturalHeight||e()):a._resize()}function e(){function t(e){e&&(!function(e){if(!e.tagName)throw new TypeError("Object is not a valid DOM element");if("MAP"!==e.tagName.toUpperCase())throw new TypeError("Expected <MAP> tag, found <"+e.tagName+">.")}(e),r.call(e),n.push(e))}var n;return function(e){switch(n=[],typeof e){case"undefined":case"string":Array.prototype.forEach.call(document.querySelectorAll(e||"map"),t);break;case"object":t(e);break;default:throw new TypeError("Unexpected data type ("+typeof e+").")}return n}}"function"==typeof define&&define.amd?define([],e):"object"==typeof module&&"object"==typeof module.exports?module.exports=e():window.imageMapResize=e(),"jQuery"in window&&(window.jQuery.fn.imageMapResize=function(){return this.filter("map").each(r).end()})}();
+
+// Harlowe Macro Framework, by Chapel; version 1.0.2
+;!function(){"use strict";var r={major:1,minor:0,patch:2},e=[r.major,r.minor,r.patch].join(".");r.semantic=e,r=Object.freeze(r);var t=$("tw-storydata"),a=Object.freeze({name:t.attr("name"),ifid:t.attr("ifid")}),n=t.attr("format-version"),o=n.split("."),i=Object.freeze({major:o[0],minor:o[1],patch:o[2],semantic:n});window.Harlowe=window.Harlowe||{},window.Harlowe=Object.assign(window.Harlowe,{framework:r,API_ACCESS:Object.freeze({MACROS:require("macros"),STATE:require("state"),CHANGER:require("datatypes/changercommand"),ENGINE:require("engine")}),engine:i,story:a})}(),function(){"use strict";function e(r){return"number"==typeof r||"boolean"==typeof r||"string"==typeof r||null===r||Array.isArray(r)&&r.every(e)||r instanceof Set&&Array.from(r).every(e)||r instanceof Map&&Array.from(r.values()).every(e)||_changer.isPrototypeOf(r)}window.Harlowe=Object.assign(window.Harlowe,{helpers:{isSerialisable:e,isSerializable:e,arrayify:function(r,e){if(r){var t=[].slice.call(r);return void 0!==e&&(t=t.slice(e)),t}},getPassageData:function(r){var e=$('tw-passagedata[name="'+r+'"]');if(e[0])return e}}})}(),function(){"use strict";var n=window.localStorage||!1,o=Harlowe.story.ifid+"-tw-storage";function r(){try{if(!n)throw new Error("storage is inaccessible");n.setItem(o,JSON.stringify({ifid:Harlowe.story.ifid}))}catch(r){console.warn(r)}}function i(r){try{var e;if(n)return e=JSON.parse(n.getItem(o)),r&&r&&"string"==typeof r?e[r]:e;throw new Error("storage is inaccessible")}catch(r){console.warn(r)}}null==i()&&r(),Harlowe.storage={clear:r,save:function(r,e){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(void 0===e)throw new TypeError("cannot store undefined values");var t={};if(t[r]=e,!n)throw new Error("storage is inaccessible");var a=i();Object.assign(a,t),n.setItem(o,JSON.stringify(a))}catch(r){console.warn(r)}},load:i,remove:function(r){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(!n)throw new Error("storage is inaccessible");var e=i();e.hasOwnProperty(r)&&(delete e[r],n.setItem(o,JSON.stringify(e)))}catch(r){console.warn(r)}}}}(),function(){"use strict";function a(r,e,t){if(!(this instanceof a))return new a(r,e,t);this.name=r||"unknown",this.args=e||[],this.data=t||{},this.type=t&&t.type||"basic",this.fn=t&&t.fn||"handler","changer"===this.type&&("handler"===this.fn?this.instance=t&&t.instance||null:this.descriptor=t&&t.descriptor||null)}a.create=function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");return e&&e instanceof Array||(e=[]),t&&"object"==typeof t||(t={type:"basic",fn:"handler"}),new a(r,e,t)},Object.assign(a.prototype,{clone:function(){return a.create(this.name,this.args,this.data)},syntax:function(){return"("+this.name+":)"},error:function(r,e){var t="Error in the "+this.syntax()+" macro: "+r;return e&&alert(t),console.warn("HARLOWE CUSTOM MACRO ERROR -> ",t),new Error(r)},typeCheck:function(r){r&&r instanceof Array||(r=Harlowe.helpers.arrayify(arguments));var n=this,o=[];if(r.forEach(function(r,e){var t=e+1,a=[];"string"==typeof r&&("any"===(a=r.includes("|")?r.split("|").map(function(r){return r.trim().toLowerCase()}):[r.trim().toLowerCase()])[0]||a.some(function(r){return typeof n.args[e]===r})||o.push("argument "+t+" should be a(n) "+a.join(" or ")))}),o.length)return n.error(o.join("; "))}}),window.Harlowe=Object.assign(window.Harlowe,{MacroContext:a})}(),function(){"use strict";var c=Harlowe.API_ACCESS.MACROS,l=Harlowe.API_ACCESS.CHANGER;window.Harlowe=Object.assign(window.Harlowe||{},{macro:function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");if(!e||"function"!=typeof e)throw new TypeError("Invalid macro handler.");var a,n,o,i,s;t&&"function"==typeof t?(o=r,i=e,s=t,c.addChanger(o,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=l.create(o,r),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"handler",instance:e});return i.apply(t,r),e},function(){var r=Harlowe.helpers.arrayify(arguments),e=r.shift(),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"changer",descriptor:e});s.apply(t,r)},c.TypeSignature.zeroOrMore(c.TypeSignature.Any))):(a=r,n=e,c.add(a,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=Harlowe.MacroContext.create(a,r,{type:"basic",fn:"handler"}),t=n.apply(e,r);return null==t?"":t},c.TypeSignature.zeroOrMore(c.TypeSignature.Any)))}})}(),function(){"use strict";var t=Harlowe.API_ACCESS.STATE,e=Harlowe.API_ACCESS.ENGINE;function a(){return t.passage}window.Harlowe=Object.assign(window.Harlowe||{},{passage:a,tags:function(r){r=r||a();try{var e=Harlowe.helpers.getPassageData(r).attr("tags");return e?e.split(" "):[]}catch(r){return console.warn(r.message),[]}},goto:function(r){return e.goToPassage(r)},variable:function(r,e){if("$"!==r[0])throw new Error('cannot access variable "'+r+'"');if(r=r.substr(1),void 0!==e){if(!Harlowe.helpers.isSerialisable(e))throw new Error('The value passed to variable "'+r+'" cannot be serialized.');t.variables[r]=e}return t.variables[r]},visited:function(r){return t.passageNameVisited(r||a())},hasVisited:function(r){return 0<t.passageNameVisited(r||a())},turns:function(){return t.pastLength}})}();
+// end Harlowe Macro Framework</script><tw-tag name="danger" color="red"></tw-tag><tw-tag name="galaxy" color="blue"></tw-tag><tw-tag name="galaxy-2" color="purple"></tw-tag><tw-tag name="galaxytwo" color="purple"></tw-tag><tw-tag name="cream" color="yellow"></tw-tag><tw-passagedata pid="1" name="EYE" tags="" position="1225,125" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;=======XXXXXXXXXXXXXXX===&quot;)[The eye watches 
 even when it is closed. 
 Seeing what is,
 and what could be. 
@@ -28,12 +68,21 @@ Enter into the Iris
 when you are ready
 to seek what is hidden.]
 
-[[&lt;img class=&quot;story-image&quot; src=&quot;./images/eye two.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;Missed call]]
+
+[[&lt;img style=&quot;width: 110%;&quot; src=&quot;./images/eye two.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;Missed call]]
 
 
+[[&lt;img style=&quot;width: 110%;&quot; src=&quot;./images/eye two.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;the house]]
+
+There she was. (after: 2s, (cond: visits &gt; 0, 200ms, 0))
+[= Covered in fur, (after: time + 2s, (cond: visits &gt; 0, 200ms, 0))
+[= sitting on all fours, (after: time + 2s, (cond: visits &gt; 0, 200ms, 0))
+[= and howling at the moon.(after:time +3s, (cond: visits&gt;0,200ms,0))
+[=&lt;img src=&quot;./images/eye two.jpeg&quot;&gt;
 
 &lt;audio src=&quot;./audio/interlude.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
-</tw-passagedata><tw-passagedata pid="2" name="call fiancé&#39;s mum" tags="" position="25,325" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s mum. It rang a couple of times before it went to voice mail. 
+
+</tw-passagedata><tw-passagedata pid="2" name="call fiancé&#39;s mum" tags="" position="825,250" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s mum. It rang a couple of times before it went to voice mail. 
 
 I dialed again but for the second time, it went to voicemail. 
 
@@ -53,7 +102,8 @@ I dialled her but her her phone is dead. I began to worry.
 
 What is happening? 
 
-[[&lt;iframe style = &quot;width: 120%; height: 2806px&quot;&lt;img class=&quot;story-image&quot; src=&quot;./images/eyefive.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;Mum&#39;s eye]]</tw-passagedata><tw-passagedata pid="3" name="call fiancé&#39;s dad" tags="" position="900,300" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s dad. It rang a couple of times before it went to voice mail. 
+[[&lt;img src=&quot;./images/eyefive.jpeg&quot;alt=&quot;car&quot;/&gt;-&gt;mum&#39;s eye]]
+</tw-passagedata><tw-passagedata pid="3" name="call fiancé&#39;s dad" tags="" position="1700,225" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s dad. It rang a couple of times before it went to voice mail. 
 
 I dialed again but for the second time, it went to voicemail. 
 
@@ -71,7 +121,7 @@ I look around my two-bed apartment and looked for signs of my fiancè. She said 
 
 I dialled her but her her phone is dead. I began to worry. 
 
-What is happening? </tw-passagedata><tw-passagedata pid="4" name="call our friend Anna" tags="" position="425,625" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my our friend Anna. It rang a couple of times before it went to voice mail. 
+What is happening? </tw-passagedata><tw-passagedata pid="4" name="call our friend Anna" tags="" position="1300,600" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my our friend Anna. It rang a couple of times before it went to voice mail. 
 
 I dialed again but for the second time, it went to voicemail. 
 
@@ -89,7 +139,7 @@ I look around my two-bed apartment and looked for signs of my fiancè. She said 
 
 I dialled her but her her phone is dead. I began to worry. 
 
-What is happening? </tw-passagedata><tw-passagedata pid="5" name="call our friend Jack" tags="" position="175,600" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend Jack. It rang a couple of times before he answered. 
+What is happening? </tw-passagedata><tw-passagedata pid="5" name="call our friend Jack" tags="" position="900,450" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend Jack. It rang a couple of times before he answered. 
 
 &quot;Hey bro, I see you called me? What&#39;s up?&quot; I asked when he answered. 
 
@@ -138,7 +188,7 @@ My car is done.
 [[Call ambulance and tow truck]]
 
 [[Call uber to go to the hospital]]
-</tw-passagedata><tw-passagedata pid="6" name="call our friend Lily" tags="" position="600,600" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my our friend Lily. It rang a couple of times before it went to voice mail. 
+</tw-passagedata><tw-passagedata pid="6" name="call our friend Lily" tags="" position="1500,600" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my our friend Lily. It rang a couple of times before it went to voice mail. 
 
 I dialed again but for the second time, it went to voicemail. 
 
@@ -156,7 +206,7 @@ I look around my two-bed apartment and looked for signs of my fiancè. She said 
 
 I dialled her but her her phone is dead. I began to worry. 
 
-What is happening? </tw-passagedata><tw-passagedata pid="7" name="call our friend Trent" tags="" position="850,475" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend Trent. It rang a couple of times before it went to voice mail. 
+What is happening? </tw-passagedata><tw-passagedata pid="7" name="call our friend Trent" tags="" position="1700,500" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend Trent. It rang a couple of times before it went to voice mail. 
 
 I dialed again but for the second time, it went to voicemail. 
 
@@ -174,13 +224,13 @@ I look around my two-bed apartment and looked for signs of my fiancè. She said 
 
 I dialled her but her her phone is dead. I began to worry. 
 
-What is happening? </tw-passagedata><tw-passagedata pid="8" name="Call ambulance and tow truck" tags="" position="100,825" size="100,100">I went to check the other car and he seemed fine. We called an ambulance just in case. 
+What is happening? </tw-passagedata><tw-passagedata pid="8" name="Call ambulance and tow truck" tags="" position="725,550" size="100,100">I went to check the other car and he seemed fine. We called an ambulance just in case. 
 
 After that was done, I called the tow truck to pick up my car. 
 
 After exchanging details and filling up informations, I immediately hurried and took my thinsg from my car. 
 
-then, I went to [[Call uber to go to the hospital]]</tw-passagedata><tw-passagedata pid="9" name="Call uber to go to the hospital" tags="" position="275,825" size="100,100">Five minutes later after calling, the uber arrived. 
+then, I went to [[Call uber to go to the hospital]]</tw-passagedata><tw-passagedata pid="9" name="Call uber to go to the hospital" tags="" position="925,575" size="100,100">Five minutes later after calling, the uber arrived. 
 
 It took another 10 minutes before we got to the hospital. 
 
@@ -210,13 +260,14 @@ James lifted me by the shoulder, guiding me through the hospital hallway.
 
 We stopped by a door with wide window glass where I saw the rest of our friends and my fiancé&#39;s parents. All crying. 
 
-</tw-passagedata><tw-passagedata pid="10" name="Trent&#39;s eye" tags="" position="900,600" size="100,100"></tw-passagedata><tw-passagedata pid="11" name="Anna&#39;s eye" tags="" position="425,750" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="Lily&#39;s eye" tags="" position="600,750" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Missed call" tags="" position="525,225" size="100,100">I have just finished my 12-hr shift when I received missed calls from my fiancé&#39;s parents and our friends. 14 missed call from my fiancé&#39;s mum, 10 missed calls from my fiancé&#39;s dad, 3 missed calls from Anna, 2 missed call from Jack, 7 from Lily and 1 from Trent. What the heck is going on? 
+</tw-passagedata><tw-passagedata pid="10" name="Trent&#39;s eye" tags="" position="1775,600" size="100,100"></tw-passagedata><tw-passagedata pid="11" name="Anna&#39;s eye" tags="" position="1400,700" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="Lily&#39;s eye" tags="" position="1600,700" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Missed call" tags="danger" position="1250,425" size="100,100">
+
+I have just finished my 12-hr shift when I received missed calls from my fiancé&#39;s parents and our friends. 14 missed call from my fiancé&#39;s mum, 10 missed calls from my fiancé&#39;s dad, 3 missed calls from Anna, 2 missed call from Jack, 7 from Lily and 1 from Trent. What the heck is going on? 
 
 I have to call them back. I took the car keys out of my back pocket and walked towards my car. I use my other hand to dial on my phone but I don&#39;t know who to call first.  
 
-&lt;iframe style = &quot;width: 120%; height: 760px; object-fit: fill,&quot;img class=&quot;story-image&quot; src=&quot;./images/car.jpeg&quot; alt=&quot;car&quot; /&gt;
 
-
+&lt;img src=&quot;./images/car.jpeg&quot;alt=&quot;car&quot;/&gt;
 
 [[call fiancé&#39;s mum]]
 [[call fiancé&#39;s dad]]
@@ -228,15 +279,54 @@ I have to call them back. I took the car keys out of my back pocket and walked t
 
 
 
-[[&lt;img class=&quot;story-image&quot; src=&quot;./images/eye.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;eye]]
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/eye.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;eye]]
 
-&lt;audio src=&quot;./audio/audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="14" name="eye" tags="" position="300,125" size="100,100">poem 2</tw-passagedata><tw-passagedata pid="15" name="Mum&#39;s eye" tags="" position="25,500" size="100,100">poem 3
+press the eye.
 
-[[&lt;img class=&quot;story-image&quot; src=&quot;./images/puzzle.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;Fiancé&#39;s Mum]]</tw-passagedata><tw-passagedata pid="16" name="Fiancé&#39;s Mum" tags="" position="25,625" size="100,100">Her name is Joanna. She is 49 years old. 
+&lt;audio src=&quot;./audio/audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="14" name="eye" tags="galaxy" position="950,125" size="100,100">poem 2</tw-passagedata><tw-passagedata pid="15" name="mum&#39;s eye" tags="galaxytwo" position="650,325" size="100,100">poem 3
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/puzzle.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;puzzle]]</tw-passagedata><tw-passagedata pid="16" name="puzzle" tags="" position="525,450" size="100,100">Her name is Joanna. She is 49 years old. 
 Job:
 Dislikes:
 Likes: 
-etc</tw-passagedata></tw-storydata>
+etc</tw-passagedata><tw-passagedata pid="17" name="the house" tags="cream" position="1100,800" size="100,100">
+&lt;!-- Image Map Generated by http://www.image-map.net/ --&gt;
+&lt;img src=&quot;./images/house.jpeg&quot; usemap=&quot;#image-map&quot;&gt;
+
+&lt;map name=&quot;image-map&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;attic&quot; title=&quot;attic&quot; href=&quot;&quot; coords=&quot;375,262,914,0,1069,2,1610,263&quot; shape=&quot;poly&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;bedroom&quot; title=&quot;bedroom&quot; href=&quot;&quot; coords=&quot;366,284,694,521&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;bathroom&quot; title=&quot;bathroom&quot; href=&quot;&quot; coords=&quot;701,288,940,521&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;twin bedroom&quot; title=&quot;twin bedroom&quot; href=&quot;&quot; coords=&quot;1243,281,1618,521&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;family closet&quot; title=&quot;family closet&quot; href=&quot;&quot; coords=&quot;361,544,575,792&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;dining room&quot; title=&quot;dining room&quot; href=&quot;&quot; coords=&quot;588,547,949,790&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;living room&quot; title=&quot;living room&quot; href=&quot;&quot; coords=&quot;1034,549,1620,790&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;laundry room&quot; title=&quot;laundry room&quot; href=&quot;&quot; coords=&quot;814,814,1111,1036&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;garage&quot; title=&quot;garage&quot; href=&quot;&quot; coords=&quot;1128,814,1618,1032&quot; shape=&quot;rect&quot;&gt;
+&lt;/map&gt;
+
+&lt;div style=&quot;display:none;&quot;&gt;
+[[bedroom]]
+[[twin bedroom]] 
+[[family closet]] 
+[[dining room]] 
+[[attic]] 
+[[garage]] 
+[[living room]] 
+[[laundry room]] 
+[[bathroom]] 
+&lt;/div&gt;
+
+&lt;script&gt;
+ $(&#39;area&#39;).on(&#39;click&#39;, function(e){
+   e.preventDefault();
+   Harlowe.goto(this.alt);
+ });
+ $(&#39;map&#39;).imageMapResize();
+&lt;/script&gt;
+
+</tw-passagedata><tw-passagedata pid="18" name="twin bedroom" tags="" position="1225,800" size="100,100">twin bedroom</tw-passagedata><tw-passagedata pid="19" name="bedroom" tags="" position="875,750" size="100,100">bedroom</tw-passagedata><tw-passagedata pid="20" name="dining room" tags="" position="1100,1000" size="100,100">dining room</tw-passagedata><tw-passagedata pid="21" name="living room" tags="" position="1400,900" size="100,100">living room</tw-passagedata><tw-passagedata pid="22" name="garage" tags="" position="1300,1000" size="100,100">garage</tw-passagedata><tw-passagedata pid="23" name="family closet" tags="" position="800,1000" size="100,100">family closet</tw-passagedata><tw-passagedata pid="24" name="attic" tags="" position="1025,1100" size="100,100">attic
+</tw-passagedata><tw-passagedata pid="25" name="laundry room" tags="" position="1175,1200" size="100,100">laundry room</tw-passagedata><tw-passagedata pid="26" name="Untitled Passage" tags="" position="1050,1325" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="bathroom" tags="" position="875,1125" size="100,100">bathroom</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
