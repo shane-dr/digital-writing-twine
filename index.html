@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Who murdered my fiancé?.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Who murdered my fiancé?" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="4B5DC98F-579A-4319-82C3-8DD1065D7E36" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">  tw-sidebar {
+<tw-storydata name="Who murdered my fiancé?" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="4B5DC98F-579A-4319-82C3-8DD1065D7E36" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">  tw-sidebar {
     display: none;
 }
 
@@ -45,7 +45,23 @@ tw-story[tags~="cream"] {  /* the tag added in step 2 */
 
 
 tw-passage[tags~="middle"] {text-align: center ;
-  }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
+  }
+  
+  tw-story[tags~="galaxy"] {  /* the tag added in step 2 */
+  background-image: url(./images/galaxy.jpeg);  /* the image added in step 1 */
+  background-size: cover;  /* cover the whole element */
+  background-repeat: no-repeat;  /* do not repeat the background image */
+}
+  
+  
+  
+tw-story[tags~="skin"] {  /* the tag added in step 2 */
+  background-image: url(./images/skin.jpeg);  /* the image added in step 1 */
+  background-size: cover;  /* cover the whole element */
+  background-repeat: no-repeat;  /* do not repeat the background image */
+  background-color:#DEA7A0;
+
+  </style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
  *  Desc: Resize HTML imageMap to scaled image.
  *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
  *  License: MIT
@@ -55,277 +71,66 @@ tw-passage[tags~="middle"] {text-align: center ;
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
 ;!function(){"use strict";var r={major:1,minor:0,patch:2},e=[r.major,r.minor,r.patch].join(".");r.semantic=e,r=Object.freeze(r);var t=$("tw-storydata"),a=Object.freeze({name:t.attr("name"),ifid:t.attr("ifid")}),n=t.attr("format-version"),o=n.split("."),i=Object.freeze({major:o[0],minor:o[1],patch:o[2],semantic:n});window.Harlowe=window.Harlowe||{},window.Harlowe=Object.assign(window.Harlowe,{framework:r,API_ACCESS:Object.freeze({MACROS:require("macros"),STATE:require("state"),CHANGER:require("datatypes/changercommand"),ENGINE:require("engine")}),engine:i,story:a})}(),function(){"use strict";function e(r){return"number"==typeof r||"boolean"==typeof r||"string"==typeof r||null===r||Array.isArray(r)&&r.every(e)||r instanceof Set&&Array.from(r).every(e)||r instanceof Map&&Array.from(r.values()).every(e)||_changer.isPrototypeOf(r)}window.Harlowe=Object.assign(window.Harlowe,{helpers:{isSerialisable:e,isSerializable:e,arrayify:function(r,e){if(r){var t=[].slice.call(r);return void 0!==e&&(t=t.slice(e)),t}},getPassageData:function(r){var e=$('tw-passagedata[name="'+r+'"]');if(e[0])return e}}})}(),function(){"use strict";var n=window.localStorage||!1,o=Harlowe.story.ifid+"-tw-storage";function r(){try{if(!n)throw new Error("storage is inaccessible");n.setItem(o,JSON.stringify({ifid:Harlowe.story.ifid}))}catch(r){console.warn(r)}}function i(r){try{var e;if(n)return e=JSON.parse(n.getItem(o)),r&&r&&"string"==typeof r?e[r]:e;throw new Error("storage is inaccessible")}catch(r){console.warn(r)}}null==i()&&r(),Harlowe.storage={clear:r,save:function(r,e){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(void 0===e)throw new TypeError("cannot store undefined values");var t={};if(t[r]=e,!n)throw new Error("storage is inaccessible");var a=i();Object.assign(a,t),n.setItem(o,JSON.stringify(a))}catch(r){console.warn(r)}},load:i,remove:function(r){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(!n)throw new Error("storage is inaccessible");var e=i();e.hasOwnProperty(r)&&(delete e[r],n.setItem(o,JSON.stringify(e)))}catch(r){console.warn(r)}}}}(),function(){"use strict";function a(r,e,t){if(!(this instanceof a))return new a(r,e,t);this.name=r||"unknown",this.args=e||[],this.data=t||{},this.type=t&&t.type||"basic",this.fn=t&&t.fn||"handler","changer"===this.type&&("handler"===this.fn?this.instance=t&&t.instance||null:this.descriptor=t&&t.descriptor||null)}a.create=function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");return e&&e instanceof Array||(e=[]),t&&"object"==typeof t||(t={type:"basic",fn:"handler"}),new a(r,e,t)},Object.assign(a.prototype,{clone:function(){return a.create(this.name,this.args,this.data)},syntax:function(){return"("+this.name+":)"},error:function(r,e){var t="Error in the "+this.syntax()+" macro: "+r;return e&&alert(t),console.warn("HARLOWE CUSTOM MACRO ERROR -> ",t),new Error(r)},typeCheck:function(r){r&&r instanceof Array||(r=Harlowe.helpers.arrayify(arguments));var n=this,o=[];if(r.forEach(function(r,e){var t=e+1,a=[];"string"==typeof r&&("any"===(a=r.includes("|")?r.split("|").map(function(r){return r.trim().toLowerCase()}):[r.trim().toLowerCase()])[0]||a.some(function(r){return typeof n.args[e]===r})||o.push("argument "+t+" should be a(n) "+a.join(" or ")))}),o.length)return n.error(o.join("; "))}}),window.Harlowe=Object.assign(window.Harlowe,{MacroContext:a})}(),function(){"use strict";var c=Harlowe.API_ACCESS.MACROS,l=Harlowe.API_ACCESS.CHANGER;window.Harlowe=Object.assign(window.Harlowe||{},{macro:function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");if(!e||"function"!=typeof e)throw new TypeError("Invalid macro handler.");var a,n,o,i,s;t&&"function"==typeof t?(o=r,i=e,s=t,c.addChanger(o,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=l.create(o,r),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"handler",instance:e});return i.apply(t,r),e},function(){var r=Harlowe.helpers.arrayify(arguments),e=r.shift(),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"changer",descriptor:e});s.apply(t,r)},c.TypeSignature.zeroOrMore(c.TypeSignature.Any))):(a=r,n=e,c.add(a,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=Harlowe.MacroContext.create(a,r,{type:"basic",fn:"handler"}),t=n.apply(e,r);return null==t?"":t},c.TypeSignature.zeroOrMore(c.TypeSignature.Any)))}})}(),function(){"use strict";var t=Harlowe.API_ACCESS.STATE,e=Harlowe.API_ACCESS.ENGINE;function a(){return t.passage}window.Harlowe=Object.assign(window.Harlowe||{},{passage:a,tags:function(r){r=r||a();try{var e=Harlowe.helpers.getPassageData(r).attr("tags");return e?e.split(" "):[]}catch(r){return console.warn(r.message),[]}},goto:function(r){return e.goToPassage(r)},variable:function(r,e){if("$"!==r[0])throw new Error('cannot access variable "'+r+'"');if(r=r.substr(1),void 0!==e){if(!Harlowe.helpers.isSerialisable(e))throw new Error('The value passed to variable "'+r+'" cannot be serialized.');t.variables[r]=e}return t.variables[r]},visited:function(r){return t.passageNameVisited(r||a())},hasVisited:function(r){return 0<t.passageNameVisited(r||a())},turns:function(){return t.pastLength}})}();
-// end Harlowe Macro Framework</script><tw-tag name="danger" color="red"></tw-tag><tw-tag name="galaxy" color="blue"></tw-tag><tw-tag name="galaxy-2" color="purple"></tw-tag><tw-tag name="galaxytwo" color="purple"></tw-tag><tw-tag name="cream" color="yellow"></tw-tag><tw-tag name="middle" color="blue"></tw-tag><tw-passagedata pid="1" name="EYE" tags="middle" position="1225,125" size="100,100">&lt;audio src=&quot;./audio/interlude.mp3&quot; autoplay loop&gt;&lt;/audio&gt;  
+// end Harlowe Macro Framework</script><tw-tag name="danger" color="none"></tw-tag><tw-tag name="galaxy" color="blue"></tw-tag><tw-tag name="galaxy-2" color="purple"></tw-tag><tw-tag name="galaxytwo" color="purple"></tw-tag><tw-tag name="cream" color="yellow"></tw-tag><tw-tag name="middle" color="blue"></tw-tag><tw-passagedata pid="1" name="start" tags="middle" position="1225,125" size="100,100">
 
+(align:&quot;=&gt;&lt;=&quot;)[&#39;&#39;Content Warning: &#39;&#39;The following interactive story contains material that may be traumatising to some audience. Viewer discretion is advised.] 
 
-(align:&quot;=&gt;&lt;=&quot;)[=The eye watches(after: 2s,)
-(align:&quot;=&gt;&lt;=&quot;)[=even when it is closed. (after: 2s,)
 
+(align:&quot;=&gt;&lt;=&quot;)[enter [[here]] to start]
 
-(align:&quot;=&gt;&lt;=&quot;)[=Seeing what is,  (after: time + 2s,)
 
 
-(align:&quot;=&gt;&lt;=&quot;)[=and what could be.  (after: time + 2s,)
+</tw-passagedata><tw-passagedata pid="2" name="Missed call" tags="" position="1250,425" size="100,100">
 
+I have just finished my 36-hr shift when I received missed calls from several people. 14 missed calls from my fiancé&#39;s mum, 10 missed calls from my fiancé&#39;s dad, 4 missed calls from Jack. My best friend and Anna’s (my fiancé) boss. What the heck is going on? 
 
-(align:&quot;=&gt;&lt;=&quot;)[=What was once a memory, (after: time + 2s,)
+I took the car keys out of my back pocket and walked towards my car. I use my other hand to dial on my phone, but I don&#39;t know who to call first.  
 
-
-[=and what has been.  (after: time + 2s,)
-
-
-
- [=The eye sees,  (after: time + 2s,)
-
-
-[=and it is seen.  (after: time + 2s,)
-
-
-[=It reveals and conceals.  (after: time + 2s,)
-
-
-[=It invites to keep looking,  (after: time + 2s,)
-
-
-[=to keep seeing,  (after: time + 2s,)
-
-
-[=to understand  (after: time + 2s,)
-
-
-[=and to find. (after: time + 2s,)
-
-
-[=Enter into the Iris (after: time + 2s,)
-
-
-[=when you are ready (after: time + 2s,)
-
-
-[=to seek what is hidden. (after: time + 2s,)
-
-
-
-
-
-[=[[&lt;img style=&quot;width: 110%;&quot; src=&quot;./images/eye two.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;Missed call]] (after:time +3s)
-
-
-
-
-
-
-
-
-
-</tw-passagedata><tw-passagedata pid="2" name="call fiancé&#39;s mum" tags="" position="825,250" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s mum. It rang a couple of times before it went to voice mail. 
-
-I dialed again but for the second time, it went to voicemail. 
-
-&quot;Hi mum, I see you called me, sorry my phone was not with me throughout the shift. Can you call me back? Hope you&#39;re safe.&quot; I ended the voice mail. 
-
-I keep on driving while trying to call the others but the rain started pouring. 
-
-I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
-
-I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
-
-I tried calling them again, but no answer. I messaged them individually to call me back. 
-
-I look around my two-bed apartment and looked for signs of my fiancè. She said she&#39;ll be back around this time but she is still not here. 
-
-I dialled her but her her phone is dead. I began to worry. 
-
-What is happening? 
-
-[[&lt;img src=&quot;./images/eyefive.jpeg&quot;alt=&quot;car&quot;/&gt;-&gt;mum&#39;s eye]]
-</tw-passagedata><tw-passagedata pid="3" name="call fiancé&#39;s dad" tags="" position="1700,225" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s dad. It rang a couple of times before it went to voice mail. 
-
-I dialed again but for the second time, it went to voicemail. 
-
-&quot;Hey dad, I see you called me? I can&#39;t reach you now, can you call me back please?&quot; I ended the voice mail. 
-
-I keep on driving while trying to call the others but the rain started pouring. 
-
-I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
-
-I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
-
-I tried calling them again, but no answer. I messaged them individually to call me back. 
-
-I look around my two-bed apartment and looked for signs of my fiancè. She said she&#39;ll be back around this time but she is still not here. 
-
-I dialled her but her her phone is dead. I began to worry. 
-
-What is happening? </tw-passagedata><tw-passagedata pid="4" name="call our friend Anna" tags="" position="1300,600" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my our friend Anna. It rang a couple of times before it went to voice mail. 
-
-I dialed again but for the second time, it went to voicemail. 
-
-&quot;Hey Anna, I see you called me? What&#39;s up? Is everything alright? Please call me back.&quot; I ended the voice mail. 
-
-I keep on driving while trying to call the others but the rain started pouring. 
-
-I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
-
-I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
-
-I tried calling them again, but no answer. I messaged them individually to call me back. 
-
-I look around my two-bed apartment and looked for signs of my fiancè. She said she&#39;ll be back around this time but she is still not here. 
-
-I dialled her but her her phone is dead. I began to worry. 
-
-What is happening? </tw-passagedata><tw-passagedata pid="5" name="call our friend Jack" tags="" position="900,450" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend Jack. It rang a couple of times before he answered. 
-
-&quot;Hey bro, I see you called me? What&#39;s up?&quot; I asked when he answered. 
-
-&quot;Where have you been? We&#39;ve all been calling you!&quot; He answered. 
-
-I sense the panic rising. This has never happened before.
-
-I keep on driving.
-
-&quot;I didn&#39;t have my phone with me the whole shift. For some reason it also turned off. Now, can you tell me what&#39;s going on? You&#39;re scaring me.&quot;
-
-Droplets of rain have started pouring. 
-
-I picked up the pace before the rain becomes heavy. 
-
-&quot;Where are you now?&quot; He asked. 
-
-&quot;On my way home. What is going on?&quot; 
-
-&quot;Pull over right now. I&#39;ll send an address, come quick. It&#39;s about Chloe, hurry.&quot; 
-
-Within miliseconds I received the address from him. This is a hospital address. 
-
-&quot;My fiancé&#39;s in the hospital?!&quot; The panic grew strong as the rain began to pour harder. 
-
-&quot;Ill be there soon, please tell me she&#39;s alright.&quot; I held on the steering wheel tight as I followed the GPS. 
-
-&quot;She&#39;s inside OR right now. Please hur-&quot; 
-
-The line cut off as my phone died.
-
-Shit. 
-
-I drove faster and faster until I see light oncoming towards my car. I hear loud beep, prolonging as I get a clearer view of a car coming towards me. 
-
-I swerved hard before I made impact and other car did the same. 
-
-Crashed. 
-
-I crashed onto a stoplight pole. 
-
-I got out of the car after examining my state. 
-
-My car is done. 
-
-[[Call ambulance and tow truck]]
-
-[[Call uber to go to the hospital]]
-</tw-passagedata><tw-passagedata pid="6" name="call our friend Lily" tags="" position="1500,600" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my our friend Lily. It rang a couple of times before it went to voice mail. 
-
-I dialed again but for the second time, it went to voicemail. 
-
-&quot;Hey Lily, I see you called me? I can&#39;t reach you now, is there anything wrong?&quot; I ended the voice mail. 
-
-I keep on driving while trying to call the others but the rain started pouring. 
-
-I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
-
-I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
-
-I tried calling them again, but no answer. I messaged them individually to call me back. 
-
-I look around my two-bed apartment and looked for signs of my fiancè. She said she&#39;ll be back around this time but she is still not here. 
-
-I dialled her but her her phone is dead. I began to worry. 
-
-What is happening? </tw-passagedata><tw-passagedata pid="7" name="call our friend Trent" tags="" position="1700,500" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend Trent. It rang a couple of times before it went to voice mail. 
-
-I dialed again but for the second time, it went to voicemail. 
-
-&quot;Hey bro, I see you called me? I can&#39;t reach you now, what&#39;s up?&quot; I ended the voice mail. 
-
-I keep on driving while trying to call the others but the rain started pouring. 
-
-I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
-
-I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
-
-I tried calling them again, but no answer. I messaged them individually to call me back. 
-
-I look around my two-bed apartment and looked for signs of my fiancè. She said she&#39;ll be back around this time but she is still not here. 
-
-I dialled her but her her phone is dead. I began to worry. 
-
-What is happening? </tw-passagedata><tw-passagedata pid="8" name="Call ambulance and tow truck" tags="" position="725,550" size="100,100">I went to check the other car and he seemed fine. We called an ambulance just in case. 
-
-After that was done, I called the tow truck to pick up my car. 
-
-After exchanging details and filling up informations, I immediately hurried and took my thinsg from my car. 
-
-then, I went to [[Call uber to go to the hospital]]</tw-passagedata><tw-passagedata pid="9" name="Call uber to go to the hospital" tags="" position="925,575" size="100,100">Five minutes later after calling, the uber arrived. 
-
-It took another 10 minutes before we got to the hospital. 
-
-When I reached the staff counter, I heard someone call my name.
-
-&quot;Liam!&quot; I looked to see James coming towards me. 
-
-&quot;James! Where&#39;s Chloe? Please tell me she&#39;s alright.&quot; I searched around hoping to find answers. 
-
-He steadied me by holding my shoulders.
-
-I looked at him to see him with red eyes. 
-
-&quot;I&#39;m sorry, Liam. It was too late.&quot; tears began to fall from his eyes. 
-
-And then that&#39;s when I felt it. 
-
-I have been feeling the adrenaline rush the whole time and now it just stopped. 
-
-Completely stopped. 
-
-I feel my knees giving up, and I start to catch my breath. 
-
-I can&#39;t breathe.
-
-James lifted me by the shoulder, guiding me through the hospital hallway. 
-
-We stopped by a door with wide window glass where I saw the rest of our friends and my fiancé&#39;s parents. All crying. 
-
-</tw-passagedata><tw-passagedata pid="10" name="Trent&#39;s eye" tags="" position="1775,600" size="100,100"></tw-passagedata><tw-passagedata pid="11" name="Anna&#39;s eye" tags="" position="1400,700" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="Lily&#39;s eye" tags="" position="1600,700" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Missed call" tags="danger" position="1250,425" size="100,100">
-
-I have just finished my 12-hr shift when I received missed calls from my fiancé&#39;s parents and our friends. 14 missed call from my fiancé&#39;s mum, 10 missed calls from my fiancé&#39;s dad, 3 missed calls from Anna, 2 missed call from Jack, 7 from Lily and 1 from Trent. What the heck is going on? 
-
-I have to call them back. I took the car keys out of my back pocket and walked towards my car. I use my other hand to dial on my phone but I don&#39;t know who to call first.  
 
 
 &lt;img src=&quot;./images/car.jpeg&quot;alt=&quot;car&quot;/&gt;
 
-[[call fiancé&#39;s mum]]
-[[call fiancé&#39;s dad]]
-[[call our friend Anna]]
-[[call our friend Lily]]
-[[call our friend Trent]]
-[[call our friend Jack]]
+call fiancé&#39;s [[dad]]
+call fiancé&#39;s [[mum]]
+call our friend [[Jack]]
 
 
 
 
-[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/eye.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;eye]]
+&lt;audio src=&quot;./audio/horror.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="3" name="mum&#39;s eye" tags="galaxytwo" position="1600,300" size="100,100">Moments have gone by, little by little,
+As the clock ticks and the line moves,
+the faster everything seems to pass. 
 
-press the eye.
+I continue to look at the door,
+hoping for it to open with good news.
+My husband sat beside me as he stares onto nothing.
+Hand to hand 
+I wait, patiently.
 
-&lt;audio src=&quot;./audio/audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="14" name="eye" tags="galaxy" position="950,125" size="100,100">poem 2</tw-passagedata><tw-passagedata pid="15" name="mum&#39;s eye" tags="galaxytwo" position="650,325" size="100,100">poem 3
+I have many things to tell my only daughter, 
+Things I have yet to put forward. 
+Feelings and thoughts unsaid.
+Which I know I’ll regret not letting her know. 
 
-[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/puzzle.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;puzzle]]</tw-passagedata><tw-passagedata pid="16" name="puzzle" tags="" position="525,450" size="100,100">Her name is Joanna. She is 49 years old. 
-Job:
-Dislikes:
-Likes: 
-etc</tw-passagedata><tw-passagedata pid="17" name="the house" tags="cream" position="1100,800" size="100,100">
+Please don’t take this one from me, 
+bring her safe to me. 
+
+//Get to know her. Press the puzzle. //
+
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/puzzle.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;puzzle]]
+
+&lt;audio src=&quot;./audio/audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="4" name="puzzle" tags="" position="1800,325" size="100,100">Cassandra Bell’s 52-year-old woman who loves baking. She has created and started her small bakery back in town seven years ago and has been successful in their small town in Autumnville. She has always been a good baker which her children loved. Her had two daughters. One of which died 15 years ago in a car accident which led her to depression. Baking was her way to cope. 
+
+Leading to this, her relationship with her only daughter was disconnected due to her redirection of focus. After her daughter got married a year ago was the time they started bonding again and fixing their broken relationship. 
+
+//Get back to the [[present.]] //
+</tw-passagedata><tw-passagedata pid="5" name="the house" tags="cream" position="1725,1000" size="100,100">(align:&quot;==&gt;&quot;)[//press each room to see.//]
+ (align:&quot;==&gt;&quot;)[or]
+(align:&quot;==&gt;&quot;)[[move forward]]
+
+&lt;audio src=&quot;./audio/click.mp3&quot;autoplay loop&gt;&lt;/audio&gt;  
+
 &lt;!-- Image Map Generated by http://www.image-map.net/ --&gt;
 &lt;img src=&quot;./images/house.jpeg&quot; usemap=&quot;#image-map&quot;&gt;
 
@@ -360,11 +165,967 @@ etc</tw-passagedata><tw-passagedata pid="17" name="the house" tags="cream" posit
  });
  $(&#39;map&#39;).imageMapResize();
 &lt;/script&gt;
+</tw-passagedata><tw-passagedata pid="6" name="twin bedroom" tags="" position="1950,1075" size="100,100">She looked at the room with awe
+But also with aches in her heart.
 
-</tw-passagedata><tw-passagedata pid="18" name="twin bedroom" tags="" position="1225,800" size="100,100">twin bedroom
+Once, a good new came.
+Excitement prevailed
+And heart was put into every single painting,
+Glow in the light stickers 
+And into building the (crib)
+But now all is vanished
 
-back to [[the house]] </tw-passagedata><tw-passagedata pid="19" name="bedroom" tags="" position="875,750" size="100,100">bedroom</tw-passagedata><tw-passagedata pid="20" name="dining room" tags="" position="1100,1000" size="100,100">dining room</tw-passagedata><tw-passagedata pid="21" name="living room" tags="" position="1400,900" size="100,100">living room</tw-passagedata><tw-passagedata pid="22" name="garage" tags="" position="1300,1000" size="100,100">garage</tw-passagedata><tw-passagedata pid="23" name="family closet" tags="" position="800,1000" size="100,100">family closet</tw-passagedata><tw-passagedata pid="24" name="attic" tags="" position="1025,1100" size="100,100">attic
-</tw-passagedata><tw-passagedata pid="25" name="laundry room" tags="" position="1175,1200" size="100,100">laundry room</tw-passagedata><tw-passagedata pid="26" name="Untitled Passage" tags="" position="1050,1325" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="bathroom" tags="" position="875,1125" size="100,100">bathroom</tw-passagedata></tw-storydata>
+Empty closets stands tall,
+While light was lost from those glow in the dark stickers. 
+
+There is no more excitement left.
+
+Not within the house.
+
+Not within her. 
+
+//Back to [[the house]] //</tw-passagedata><tw-passagedata pid="7" name="bedroom" tags="" position="1550,850" size="100,100">White curtains,
+White covers and pillows. 
+
+Full sized window 
+With the ceramic flower vase, 
+Lilies and daisies intertwined together.
+Slowly saying their goodbyes
+As the weather slowly transform.
+
+I scan the room for traces,
+Of what was once her.
+
+The scent,
+The silhouettes 
+And the unopened book on her side table.
+
+Water on glass – untouched 
+Medicines and pills beside it
+
+Scrap of papers scattered, 
+Letters unknown 
+And will be kept unknown
+As the pages teared up in pieces
+Unable to be comprehended. 
+
+I see her shadows crying on her side of the bed
+With her palm against her face 
+Unable to hear me, no – 
+she doesn’t want to listen. 
+
+This is the space where it all started. 
+
+//Back to [[the house]] //
+</tw-passagedata><tw-passagedata pid="8" name="dining room" tags="" position="1300,1300" size="100,100">I’m tired of this.
+
+I’m tired of everything. 
+
+I never thought words like those can ruin many things
+That you once held dearly in your heart.
+
+Like the mug you strived to create for your anniversary.
+
+The mug you carefully shaped and created to give,
+
+Now scattered across the floor,
+In tiny little pieces you know can never be put back together.
+
+It is too tiny that if you try to glue it all back,
+
+There will still be pieces, tiny pieces left out 
+
+Too small for the eye to see to bring back to the main body. 
+
+Almost as if it was lost and scattered in the air like dusts.
+
+//Back to [[the house]] //
+</tw-passagedata><tw-passagedata pid="9" name="living room" tags="" position="2000,900" size="100,100">Family gatherings,
+Cup of tea in the morning while one waits for the sun to rise. 
+
+That is this place.
+
+The area where you put your Christmas tree on when winter comes
+The tree you decorate each year
+Making it a down time and activity for the both of you.
+
+The area where the other stays and wait when one stayed out late in the night.
+The area where you sit to have silly conversations.
+
+Or when you start to talk about your day.
+
+This is always the meet up place for the game nights.
+This is the place where you meet in the middle. 
+
+//Back to [[the house]].//
+</tw-passagedata><tw-passagedata pid="10" name="garage" tags="" position="1875,1200" size="100,100">Get the keys, we’re leaving. 
+He says.
+I’m not going. 
+She replies. 
+
+Minutes have passed 
+And yet
+They are still in the same place
+Like feet glued to the ground.
+
+He stared at her 
+She stared at him
+
+Nothing changes. 
+
+He asks why
+She says 
+You know why
+
+But he doesn’t.
+
+Remind me again.
+He pleads
+
+But she doesn’t want to.
+
+She never does. 
+
+//Back to [[the house]] //
+</tw-passagedata><tw-passagedata pid="11" name="family closet" tags="" position="1275,925" size="100,100">We should put the heavy coats her, hon. 
+She says.
+So it’s easy access whenever winter rolls in.
+She added. 
+
+We kept filing this space with winter clothes.
+Until we started using it as a storage for something else. 
+Unused furniture,
+Unused clothes,
+Unused and used everything. 
+
+There was once many things cluttered in this space
+And we liked to keep adding more
+Because we like to say 
+‘one day’
+One day we’ll use this. 
+
+But that one day never came. 
+
+//Back to [[the house]] //
+</tw-passagedata><tw-passagedata pid="12" name="attic" tags="" position="1500,1250" size="100,100">Floors creaking as you step up
+Reaching the floor where you set up
+As the movie night place.
+
+Together designing the home for the future
+You wanted together 
+She never really liked the idea of attics
+Seen from the scary movies 
+You saw on your first date night
+
+Hence you designed something cozy
+Something comfortable 
+This attic’s not a storage 
+Of the memories you built with her
+
+It’s a place
+A belonging for those Friday nights
+Where you bicker
+And throw popcorn to each other.
+
+But now you walk through the area
+With spider webs around everywhere
+And dusty furniture.
+
+How long has it been since you had those Friday nights?
+Too long to remember. 
+
+//Back to [[the house]].//
+
+</tw-passagedata><tw-passagedata pid="13" name="laundry room" tags="" position="1675,1250" size="100,100">Sheets 
+Those white bedsheets and pillow sheets. 
+Throw them in
+It is time for a clean Sunday
+
+But this is becoming redundant.
+The woman starts to complain
+How everything is the same
+How everything is becoming the same
+
+It is not a fun routine,
+Nor sweet routine.
+This one is repetitive
+And tiring.
+
+//Back to [[the house]].//
+</tw-passagedata><tw-passagedata pid="14" name="Untitled Passage" tags="" position="1050,1325" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="bathroom" tags="" position="1300,1075" size="100,100">She looked in the mirror,
+Eyes bloody red
+And cannot see straight.
+Mascara running down her face
+As the terror emerges from within. 
+
+Palms on the counter,
+Breathe one,
+Two
+Three. 
+
+She looked again on her side
+To see the plastic stick
+That often determines happiness 
+Or destruction in someone else’s life. 
+
+Negative. 
+
+Again. 
+
+The woman stared what was in front of her
+Trying to understand her emotions.
+Worried.
+Concerned.
+Disappointed.
+Scared.
+Unhappy. 
+She looks very unhappy. 
+
+//Back to [[the house]] //
+</tw-passagedata><tw-passagedata pid="16" name="here" tags="" position="1400,200" size="100,100">&lt;audio src=&quot;./audio/interlude.mp3&quot;autoplay loop&gt;&lt;/audio&gt;  
+
+[=The eye watches (after: time 2s,)
+
+
+[=even when it is closed. (after: time 2s,)
+
+
+[=Seeing what is,  (after: time + 2s,)
+
+
+[=and what could be.  (after: time + 2s,)
+
+
+[=What was once a memory, (after: time + 3s,)
+
+
+[=and what has been.  (after: time + 2s,)
+
+
+
+[=The eye sees,  (after: time + 2s,)
+
+
+[=and it is seen.  (after: time + 4s,)
+
+
+[=It reveals and conceals.  (after: time + 2s,)
+
+
+[=It invites to keep looking,  (after: time + 2s,)
+
+
+[=to keep seeing,  (after: time + 3s,)
+
+
+[=to understand  (after: time + 2s,)
+
+
+[=and to find. (after: time + 2s,)
+
+
+[=Enter into the Iris (after: time + 2s,)
+
+
+[=when you are ready (after: time + 4s,)
+
+
+[=to seek what is hidden. (after: time + 2s,)
+
+
+
+
+[= [[&lt;img style=&quot;width: 110%;&quot; src=&quot;./images/eye two.jpeg&quot;/&gt;-&gt;Missed call]] (after: time +3s, (cond: visits &gt; 0, 200ms, 0))
+
+</tw-passagedata><tw-passagedata pid="17" name="dad" tags="" position="1250,550" size="100,100">I pressed one of my fiancé’s dad’s missed calls and it started ringing. It kept on ringing and ringing until it went to voicemail. Again. And again. 
+
+I got in the car and started my engine. I began reversing my car. 
+
+&quot;Hi dad, I see you called me, sorry my phone was not with me throughout the shift. Can you call me back? Hope everything’s okay.&quot; I ended the voice mail. 
+
+I keep on driving as the rain started pouring. 
+
+I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
+
+I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
+
+I tried calling them again, but no answer. I messaged them individually to call me back. 
+
+I look around my two-bed apartment and looked for signs of my fiancé. She said she&#39;ll be back around this time, but she is still not here. 
+
+I dialled her but her phone is dead. I began to worry. 
+
+What is happening?
+
+Within minutes, I received a text. An address. 
+
+This is a hospital address. I began to panic. 
+
+//Press the eye.// 
+
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/eye.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;dad&#39;s eye]]
+
+&lt;audio src=&quot;./audio/sorrow.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="18" name="mum" tags="" position="1375,550" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my fiancé&#39;s mum. It rang a couple of times before it went to voice mail. 
+
+I dialled again but for the second time, it went to voicemail. 
+
+&quot;Hi mum, I see you called me, sorry my phone was not with me throughout the shift. Can you call me back? Hope you&#39;re safe.&quot; I ended the voice mail. 
+
+I keep on driving as the rain started pouring.
+
+I picked up the pace before the rain becomes heavy. Within 10 mins, I was able to get home. 
+
+I got in from the garage, put my keys down on the key bowl and began checking my phone calls history again. 
+
+I tried calling them again, but no answer. I messaged them individually to call me back. 
+
+I look around my two-bed apartment and looked for signs of my fiancé. She said she&#39;ll be back around this time, but she is still not here. 
+
+I dialled her but her phone is dead. I began to worry. 
+
+What is happening?
+
+Within minutes, I received a text. An address. 
+
+This is a hospital address. I began to panic. 
+
+//press the eye. //
+
+
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/eyefive.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;mum&#39;s eye]]
+
+&lt;audio src=&quot;./audio/sorrow.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="19" name="Jack" tags="" position="1125,550" size="100,100">I got in the car and started my engine. I began reversing my car and dialled my best friend, Jack. It rang a couple of times before he answered. 
+
+&quot;Hey bro, I see you called me? What&#39;s up?&quot; I asked when he answered. 
+
+&quot;John! We’ve been calling you.&quot; His voice shaking. 
+
+I sense the panic rising. This has never happened before.
+
+I keep on driving.
+
+&quot;I didn&#39;t have my phone with me the whole shift. For some reason it also turned off. What’s going on?”
+
+Droplets of rain have started pouring. 
+
+I picked up the pace before the rain becomes heavy. 
+
+&quot;Where are you now?&quot; He asked. 
+
+&quot;On my way home. What is going on?&quot; 
+
+&quot;Pull over right now. I&#39;ll send an address, come quick. It&#39;s about Anna, hurry.&quot; 
+
+Within milliseconds I received the address from him. This is a hospital address. 
+
+&quot;My fiancé&#39;s in the hospital?!&quot; The panic grew strong as the rain began to pour harder. 
+
+&quot;I’ll be there soon, please tell me she&#39;s alright.&quot; I held on the steering wheel tight as I followed the GPS. 
+
+&quot;She&#39;s inside OR right now. Please hur-&quot; 
+
+The line cut off as my phone died.
+
+Shit. 
+
+//Press the eye. //
+
+
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/eye.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;jack&#39;s eye]]
+
+&lt;audio src=&quot;./audio/sorrow.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="20" name="present." tags="" position="1825,450" size="100,100">I drove fast.
+
+I have to get there as soon as possible. Faster, stupid car, I mumbled under my breath to the car in front of me. 
+
+I press on the accelerator as I pass through an intersection. I changed lanes to overtake the slow car in front of me until I see light oncoming towards my car. I hear loud beep, prolonging as I get a clearer view of a car coming towards me. 
+
+I swerved hard before I made impact and other car did the same. 
+
+Crashed. 
+
+I crashed onto a stoplight pole. 
+
+I got out of the car after examining my state. 
+
+But I couldn’t think of anything else, other than getting to my fiancé. 
+
+Lots of people stopping by, concerned. Some have started calling an ambulance, but I need a phone. 
+
+“Sir, an ambulance will get here soon. It’s better if you sit. Here, drink some water.” A guy who stopped his car to help hands me a bottled water as he guides me on one of the pave ways.
+
+“Do you have phone I could borrow?” I asked the guy. 
+
+He nodded and hands me his phone. 
+
+I turned to look at his phone, but it blurs. I started to see two phones in front of me.
+
+I cannot think straight, I don’t remember anyone’s number except my fiancé. 
+
+Should I:
+
+[[Call an uber to get to the hospital?]]
+
+[[Wait for the ambulance to arrive? ]]
+
+&lt;audio src=&quot;./audio/fast.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="21" name="Call an uber to get to the hospital?" tags="" position="1700,625" size="100,100">Five minutes later after calling, the uber arrived. 
+
+It took another 20 minutes before we got to the hospital. 
+
+When I reached the staff counter, I heard someone call my name.
+
+&quot;John!&quot; I looked to see Jack coming towards me. 
+
+&quot;Jack! Where&#39;s Anna? Please tell me she&#39;s alright.&quot; I searched around hoping to find answers. 
+
+He steadied me by holding my shoulders.
+
+I looked at him to see him with red eyes. 
+
+&quot;I&#39;m sorry, John. It was too late.&quot; tears began to fall from his eyes. 
+
+And then that&#39;s when I felt it. 
+
+I have been feeling the adrenaline rush the whole time and now it just stopped. 
+
+Completely stopped. 
+
+I feel my knees giving up, and I start to catch my breath. 
+
+I can&#39;t breathe.
+
+Jack lifted me by the shoulder, guiding me through the hospital hallway. 
+
+We stopped by a door with wide window glass where I saw my fiancé&#39;s parents, crying.
+
+
+[[Find out why]]</tw-passagedata><tw-passagedata pid="22" name="Wait for the ambulance to arrive? " tags="" position="1875,625" size="100,100">The ambulance arrived. It took them 15 minutes to get to where I am, 15 mins wasted. 
+
+I was relieved not because they can now check if I was alright but because I could now leave soon to go straight to my fiancé. 
+
+I need to see her. ASAP. 
+
+The paramedics checked me and my vital signs. 
+
+“Can I go? I need to get to my fiancé now. She’s in the hospital.” I told the woman. 
+
+She looked at me with concern.
+
+“Which hospital?” she asked. 
+
+I told her the hospital and they helped me by getting there faster. 
+
+It took another 20 minutes before we got to the hospital. 
+
+When I reached the staff counter, I heard someone call my name.
+
+&quot;John!&quot; I looked to see Jack coming towards me. 
+
+&quot;Jack! Where&#39;s Anna? Please tell me she&#39;s alright.&quot; I searched around hoping to find answers. 
+
+He steadied me by holding my shoulders.
+
+I looked at him to see him with red eyes. 
+
+&quot;I&#39;m sorry, John. It was too late.&quot; tears began to fall from his eyes. 
+
+And then that&#39;s when I felt it. 
+
+I have been feeling the adrenaline rush the whole time and now it just stopped. 
+
+Completely stopped. 
+
+I feel my knees giving up, and I start to catch my breath. 
+
+I can&#39;t breathe.
+
+Jack lifted me by the shoulder, guiding me through the hospital hallway. 
+
+We stopped by a door with wide window glass where I saw my fiancé&#39;s parents, crying.
+
+[[Find out why]] </tw-passagedata><tw-passagedata pid="23" name="dad&#39;s eye" tags="galaxy" position="1250,675" size="100,100">She’s my little girl.
+I remember once, 
+I held her hand as we pass through a puddle.
+
+Dancing with her as she sang her favourite song,
+Getting my toenails painted as she liked.
+
+She’s my little girl. 
+I remember once, 
+I held her as she cried to me because of a boy. 
+
+Getting as much time with her as I could
+because I knew she needed me.
+
+She’s my little girl.
+I remember once, 
+how she shook my hands with bright smile on her face with her robe and cap on. 
+
+Now, 
+I don’t want it to be just things I’ll remember by myself.
+
+To my little girl, 
+allow me to reminisce these with you. 
+
+Don’t go too far as of yet,
+I am not ready to let go of your hand.
+Nor will I ever be. 
+
+//Get to know him. Press the puzzle. //
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/puzzle.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;puzzle2]]
+
+&lt;audio src=&quot;./audio/audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="24" name="puzzle2" tags="skin" position="1450,725" size="100,100">Peter Bell’s a 57-year-old man who lived in Autumnville his whole life. He was only able to graduate through high school where he met his wife. He secured a job at a construction site in his 20’s in which he now oversees as the co-partner in the Autumn Constructions. He is a father who prioritise his family and usually initiates family day. Ever since he lost his other daughter through an accident, he became more focused on taking care of his family and keeping it together. 
+
+His relationship with his only daughter is strong and has been ever since. 
+
+//Get back to the [[present.]] . //
+
+</tw-passagedata><tw-passagedata pid="25" name="jack&#39;s eye" tags="galaxytwo" position="1125,675" size="100,100">Blood rushing.
+
+Blood everywhere. 
+
+My hands shaking,
+I don’t know what happened. 
+
+Everything happened too fast.
+
+One thing I was talking to her,
+
+Next, she’s coughing on the floor. 
+
+It was an accident. 
+
+My hands are shaking up until we got to the hospital.
+
+I won’t be able to look at John. 
+
+I won’t be able to face him.
+
+Press the button, Jack.
+
+Call John. 
+
+Even if you’re scared. 
+
+//Get to know him. Press the puzzle. //
+
+
+[[&lt;img style=&quot;width: 30%; float: right; &quot; src=&quot;./images/puzzle.jpeg&quot; alt=&quot;an example&quot; /&gt;-&gt;puzzle3]]
+
+&lt;audio src=&quot;./audio/audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="26" name="puzzle3" tags="skin" position="925,575" size="100,100">Jack Collins is John’s best friend since high school and is now the boss and a friend of Anna. Jack owns a flower boutique in the central of Autumnville’s small town. Jack is known for his flower shop and as well as for his bubbly and friendly personality around town. Jack is considered with golden retriever personality. 
+
+A couple of years ago, through John’s recommendation, Anna came to work for him in his flower shop which led him having close relationship with her. 
+
+//Get back to the [[present.]] . //
+</tw-passagedata><tw-passagedata pid="27" name="Find out why" tags="" position="1700,750" size="100,100">The doctor came out of the emergency room and walks towards us as he take off his face masks. 
+
+“We are now getting her moved. A nurse will come to you to sign the consent forms for the autopsy. Once again, we are sorry for your loss.” He says to my fiancé’s parents.
+
+He acknowledges me as he walks pass me. 
+
+I stopped him.
+
+“What do you mean autopsy? Where is my fiancé?” I asked the doctor.
+
+He looked to my fiancé’s parents before he faced me properly. 
+
+“I’m very sorry for your loss. We believe that Ms. Anna Bell suffered from Abrin poisoning. This comes from plants like Rosary pea. The symptoms are vomiting, severe dehydration, hypotension and even hallucination and seizures. All the symptoms were present but we presume there is something else that might’ve cause faster response from the intake, hence, we will have to go through an autopsy to bring to conclusion her cause of death.” 
+
+Many things have gone through my head that instance. 
+
+Poison. 
+
+My fiancé was poisoned, whether this was an accident or intended, someone did this. 
+
+And they’re going to pay. 
+
+I dashed out of the hospital. I need to breathe. I need to shout. I need out. 
+
+I felt presence behind me and saw it was Jack. 
+
+“You.” I stopped and faced him.
+
+“You were with her. What happened, Jack? What happened?” I asked him, my vision starting to blur. 
+
+I don’t want to think of the possibilities, nor do I want to think of something disgusting about my best friend. 
+
+It cannot be.
+
+“I know what you’re thinking. I was there with her when she collapsed and started vomiting, John. I swear to my life I did not know what was happening. It was so sudden.” He holds me steady, hands shaking, looking at me in the eye. 
+
+I feel his sincerity, and his sadness.  
+
+We just lost someone who was dear to both of us. 
+
+But I cannot stay longer. I need out. I need to be away from everyone, so I said nothing and continued my way.
+
+Go [[home]].
+
+&lt;audio src=&quot;./audio/fast.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="28" name="home" tags="" position="1850,850" size="100,100">I arrived in the place we called home. 
+
+Our home. 
+
+I stare from the outside the place we worked so hard to build. With a lot of dreams we hope for the future, this home was a part of it. 
+
+I look from the outside and see a full-sized window.  
+
+A space that’s full of furniture but feels so empty. 
+
+And from now one, it will always be empty. 
+
+//Enter [[the house]]. //
+</tw-passagedata><tw-passagedata pid="29" name="move forward" tags="" position="1800,1525" size="100,100">I’m sitting at the front seat, looking at a coffin with the love of my life inside it. The service just finished, and the rest moved to the reception, but I cannot go there. 
+
+They will offer condolences and I will have to thank them with a fake smile on my face. 
+
+I don’t want it. 
+
+I felt a someone sat beside me, and the hand offers me a glass of bourbon. 
+
+I take it and hold it with both of my hands, my arms resting on the top of my lap. 
+
+“Don’t go there. You’ll here so much bullshit than you’ve ever heard in your life.” Said my other best friend, [[Trent]]. 
+
+Trent’s been my best friend longer than Jack. I’ve known him since before I knew how to spell my name. He’s like a brother to me. 
+
+“I wasn’t going to anyways.” I replied. I drank the bourbon straight and left not a single drop from the glass. 
+
+“Have you heard anything from the investigators?” he asks. 
+
+“They said some part of the CCTV footage was deleted. And that they’re still investigating.” I tell him. 
+
+I look at him and I see his compassion. His concern and that sadness that mirrors my face. But he’s stronger than I am, calm and collected than I am. 
+
+“I’m trying my best too, brother. I am to meet up with one of her close friends back in high school who recently moved back in town. She may know something.” 
+
+I nodded at him, showing my appreciation. 
+
+“Of course, Jack’s being cooperative too. We’re his best friend and we don’t like to think he has something to do with this. But I’m sorry, John. I’ll have to keep him longer. With that CCTV footage gone, there could be lots of possible reason as to why.” His hands clasped together, knuckles turning white. 
+
+“Thank you.” I give him my sincerest thanks. 
+
+Trent’s been the one helping me with everything ever since it happened. The one who’s keeping me straight when I obviously couldn’t. 
+
+I look behind us when I heard footsteps coming in our way. 
+
+“Hey. How’s it going you two?” Lily says softly. 
+
+“We’re fine, love. Have you eaten?” Trent took her hand and urged her to sit by him. 
+
+“Yes, I have, you should too. You both.” She gives me a look and urges me and Trent to eat the sandwich on the plate she brought.
+
+[[Lily]] has been a great help too this past week. Although she’s also grieving.
+
+“So, is there any news regarding Jack?” I see Trent freeze for a split second, and I feel my hand tighten. 
+
+“Questioning should be done soon. He should be released since there’s no clear evidence against him.” Trent replied.
+
+I see Lily breathe out of relief. 
+
+“Of course. Jack is innocent. He would never.” Lily went closer to Trent, seeking his touch. 
+
+“Yes, of course, love.” Trent caressed Lily’s arm for comfort. 
+
+But something is not adding up to what Jack has said on the report that I read. 
+
+//Read the [[report]]//
+
+“Lily, did you make new jewellery to release soon?” I break Trent and Lily in their own world. 
+
+“Uhm, yes? How did you know?” She asked curiously. 
+
+“Did anyone know you were going to have new stuff releasing?” I asked again. 
+
+“No. That’s why I’m curious as to how you found out. How did you know?” She repeats her question.  
+
+“Anna would’ve been happy to know you made new ones. You always ask for her input. Did she know you were making new ones?” I eyed her, watching her expression closely. 
+
+“She would have, wouldn’t she? Too sad, she never found out I have new jewellery to release.” She states.
+
+That’s when I felt it. The confusion. The realisation. The betrayal. The sadness. All of them all at once at a hundred speed. 
+
+“So, you never went to the boutique to ask Anna?” I ask her, my voice starting to shake. 
+
+Lily froze a little, then she relaxes.
+
+“No, I didn’t. I wish I did, then maybe I wouldn’t overthink about releasing them.” She avoided eye contact and looked down. 
+“I should go talk to some people. I’m sure that Aunt and Uncle are having a hard time outside talking to all those people. Call me when you need anything.” She looks between me and Trent before she walked away. 
+
+“Why would she lie?” I asked Trent. 
+
+Trent looked at me bewildered. 
+
+“Lie? About what?” 
+
+“About not asking Anna for opinion. About not going there to see her. Why would she lie, Trent?” my voice hardened and I didn’t realise my hands turned to fists. 
+
+“Why would she lie about that? She wouldn’t, John.” Trent said confused as to how I’m getting riled up. 
+
+“Haven’t you read Jack’s statement?” I eyed him, anger starting to rise within me. 
+
+His eyes rounding, mouth slightly opening. The realisation hits him. 
+
+“No. no. John, she would not.” Trent stood up and started pacing back and forth.
+
+“Then why would she lie?” 
+
+“Maybe it was Jack lying. Have you thought of that?” His voice starting to raise. 
+
+Trent’s always calm and collected. But not now. 
+
+“Then how would Jack know about the new release if she never told anyone about it? She said so herself, didn’t she?” I keep on pressing. I stood up and faced him. 
+
+“She wouldn’t, John. I know my wife!” Trent’s hand reached to his hair and grabbed a handful and pulled. 
+
+I look at him in disbelief. 
+
+I don’t know what’s real and what’s not anymore. 
+
+I don’t know whose words to believe anymore. 
+“Add her to the list of prospects.” I added with conviction. My voice not sounding like mine. 
+
+“Don’t make me do this, John.” Trent pleads to me. 
+
+“I need justice for Anna. My fiancé.” 
+
+//[[Go back]] home.//
+
+&lt;audio src=&quot;./audio/horror.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="30" name="Trent" tags="" position="2025,1525" size="100,100">Trent Jordans is a 34-year-old criminal defence lawyer who’s known John most of his life. He is currently working at the biggest law firm in the country. He is married to a woman named Lily Jordans who is also Anna Bell’s best friend. Currently, he is helping with the investigation of Anna’s death while also helping his best friend, John, stay on his feet while grieving.
+
+Trent met Anna when John and she started dating straight after high school. They were freshman year when they became friends. Together, they formed a bickering brother and sister relationship. And through Anna, Trent met the love of his life whom he is now married to. 
+
+Back to present, [[move forward]] 
+</tw-passagedata><tw-passagedata pid="31" name="Lily" tags="" position="1800,1700" size="100,100">Lily Jordans is a jewellery business owner. She has been passionate in jewellery ever since she was a kid and has been her dream to have her own shop. She is married to Trent, a lawyer, whom she met through Anna. 
+
+Back in high school when she and Anna met, she persuaded Anna to make jewellery by making bracelets and necklaces in their free time which Anna took as a hobby. Making Jewellery now became their bonding time. From years of their friendship, they began to treat each other as sisters. 
+
+Back to present, [[move forward]] 
+</tw-passagedata><tw-passagedata pid="32" name="report" tags="" position="1975,1650" size="100,100">&#39;&#39;INVESTIGATION REPORT&#39;&#39;
+
+Allegation / Issue: Witness
+Type of Investigation: Scene Investigation – witness 
+Name of witness: Jack Collins
+Investigator: Leo Jacobs
+
+Background: Jack Collins, 34 years old. Lives in 46 Noble Rd, Autumnville 4525. Owns a business: flower shop. Relationship with deceased: Friend. 
+
+
+On November 26th, 2023, Jack Collins was interviewed as a witness of the incident with Anna Bell in 34 Buckley Court, Autumnville 4523 at approximately 5:06 PM. 
+
+Statement:
+
+//“I don’t know how it happened; I swear. She was fine the morning she got to work, and I even asked her if we can go dinner together at their house and jokingly told her to make John cook. And she was fine then. Lily, our other friend also came in and brought us some lunch. Though I was quite far from where they were, I think Anna was so excited and happy since I think Lily surprised her with the new jewellery she made? I think she was asking for Anna’s opinion before she release them since Anna also a jewellery nerd. It was all good throughout the day. But when we were almost done for the day, she started coughing really hard. 
+
+I got very worried when it became loud, and blood started to come out. I told her we should go to the emergency room. I was going to drag her, but she stopped me and said she was fine. That’s when she collapsed.”//
+
+This investigation is initiated by …
+
+Back to present, [[move forward]] </tw-passagedata><tw-passagedata pid="33" name="Go back" tags="" position="1600,1625" size="100,100">I left the funeral in a hurry. Too many emotions. 
+
+I’m feeling so many emotions and I cannot handle it. 
+
+I feel the blood rising, I cannot see straight. 
+
+Too much has been happening.
+
+My best friend’s taken for questioning and has been kept for a week. 
+
+My fiancé’s best friend whom I also consider a friend lied and now all things point towards her. 
+
+I look around me and I’m feeling all of it. 
+
+I’m feeling her presence, but at the same time I’m not. 
+
+It’s cold in here but also hot. 
+
+I need to see her; I need her to calm me down like she used to. 
+
+Because everything keeps on building up, 
+
+But never have I expected betrayal would be one of the reasons. 
+
+I looked around and see our room kept as it was. I haven’t been sleeping in this room because her presence stayed here. And it was too strong for me to handle. 
+
+I need these emotions out. I need to not feel her right now. 
+
+Seeing this room, feeling her presence is too much right now. 
+
+Make it messy. 
+
+Erase it. 
+
+My head keeps on ringing these words. 
+
+So, I did. 
+
+I thrashed the room. 
+
+Took out the comforter out of the bed.
+
+Threw her favourite vase against the wall.
+
+Punched the wall.
+
+The TV.
+
+The mirror. 
+
+I let it all out. All those kept emotions I haven’t been letting out. 
+
+And when I’m all done, I looked at the mess I’ve made. 
+
+The first time I’ve seen our space messy. 
+
+And this helped. 
+
+Because now this room is unlike her. 
+
+She’s not here. 
+
+That, I know. 
+
+I walked through the mess I’ve created until I stepped onto a book. 
+
+No, Anna’s penguin designed journal diary. 
+
+She always had this with her. She wrote in this day and night, and I never peered. This was hers. And she kept it safe with her, fully knowing and trusting I would never open it. And me trusting her she have already let me know what she wrote about. 
+
+Trust and honesty have always been a huge foundation in our relationship. We never kept secret from each other. 
+
+But this is the first time ill open it. 
+
+//Open the [[diary]]
+//
+
+</tw-passagedata><tw-passagedata pid="34" name="diary" tags="" position="1750,1850" size="100,100">I went for a couple of page at the start. 
+
+//January 13, 2022//
+
+It was about when we rode a bike together uphill, and I fell. 
+
+These were the days. 
+
+I went to the recent journals she wrote. 
+
+I looked at the date and it says //October 20, 2023.//
+
+
+I kept on reading. 
+
+//Dear penguin, 
+
+It’s worst today. I never thought I’d experience this, this bad. I told myself I would never let depression or anxiety take over my life, but here we are. 
+I wonder when it started. 
+
+But as usual, Trent helped me. He’s been kind to me ever since I opened up to him. He is John’s best friend, but they are nothing alike. 
+
+I liked his presence; it soothed me when my fiancé couldn’t. I feel like he knows me better than my fiancé.  
+
+I’ve known Trent for so long but something is changing. About him. About us. We’re definitely closer than we have ever been, no more bickering. 
+
+I can open up to him, even on things I cannot tell Lily. 
+
+It’s very nice. 
+
+xx 
+Anna//
+
+
+I’m shocked. I slowly sat down and flip more pages to read. 
+
+//November 7, 2023
+
+Dear Penguin, 
+
+Trent visited me today, and I got excited. Why was that?//
+
+I keep on flipping pages. 
+
+//Trent.//
+
+//Trent.//
+
+//Trent.//
+
+It’s been all about him. And then another emotion started to rise within me. 
+
+Jealousy. 
+
+Madness. 
+
+But I still read the next one. 
+
+The last one. 
+
+//November 23, 2023
+
+Dear Penguin,
+
+I know what I have been feeling is wrong. And writing this down is very risky. But I can no longer hide what I’m feeling. That when Trent tries to touch me, I crave it better than my fiancé’s. I want him to be near me and he wants the same. The kiss said it all. 
+
+But it was all wrong. My fiancé is his best friend and his wife is my best friend. We are stabbing them both at the back. 
+
+But today something I didn’t think happened. 
+
+I told Trent that we should either stop what we were doing or tell them to our partners. But he wanted neither. 
+
+He touched me where I didn’t want to be touched. And for the first time after feeling at eased with him, I felt scared. 
+
+And I felt disgusting, how I kept this from my fiancé. From feeling it to begin with. To acting on it. It never should’ve happened. 
+
+I told Trent I’ll tell John. I’ll confess everything. 
+
+I would like to come clean and ask for forgiveness if I was even allowed to. 
+
+But he made sure I would never. And I couldn’t until now. 
+
+So, I’d rather kill myself than have him know. 
+
+I won’t stay here anyways. 
+
+I feel tired.
+
+And sick. 
+
+I want out. Of everything. 
+
+xx
+Anna//
+
+//[[Close the diary]]//
+
+&lt;audio src=&quot;./audio/courage.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="35" name="Close the diary" tags="" position="1750,1975" size="100,100">I cried with anger, with sadness. With every bit of emotion left in me. 
+When I thought something bad has happened, another hits me. 
+
+I don’t know what’s worst anymore.
+
+All those around me, I suspect.
+
+And the woman I loved, suffered without me knowing. 
+
+I was unreliable to her; I wasn’t her comfort. 
+But the cause of her distress. 
+
+You tell me, 
+
+Who should I believe?
+
+Jack, my best friend who was there at the time it happened. The one who had no idea where the CCTV footage of his own boutique. 
+
+Lily, my fiancé best friend who lied about seeing her on the day she died
+
+Trent, my best friend who is apparently having an affair with my fiancé
+
+Or my fiancé who suffered depression, who obviously wanted to kill herself. 
+
+
+//To be continued. //
+
+
+back to the [[start]].</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
